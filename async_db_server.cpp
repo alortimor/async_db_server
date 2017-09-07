@@ -41,6 +41,7 @@ private:
     boost::asio::async_read_until(sk, receive_data, '\n',
         [this](const boost::system::error_code& ec, std::size_t bytes_transferred) {
               if (!ec) {
+                excep_log( "Before buffer copy " + std::to_string(bytes_transferred));
                 boost::asio::streambuf::const_buffers_type bufs = receive_data.data();
                 std::string str(boost::asio::buffers_begin(bufs), boost::asio::buffers_begin(bufs) + bytes_transferred);
                 receive_data.consume(bytes_transferred);

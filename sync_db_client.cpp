@@ -73,8 +73,7 @@ int main() {
 
     if (!cl.connect()) return -1;
 
-    cl.execute_sql();
-
+    std::cout << "Connected successfully \n";
     sql = "insert into test1 (x,y) values (3,'Green')";
     cl.set_sql_statement(sql);
     cl.execute_sql();
